@@ -1,5 +1,5 @@
 import * as api from '../api/index.js';
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes'
+import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from './actionTypes'
 //Action Creators
 export const getPosts = () => async (dispatch) => {
     try {
@@ -10,6 +10,12 @@ export const getPosts = () => async (dispatch) => {
       console.log(error);
     }
   };
+  // Use fetch instead of axios
+  // export const getPosts = () =>  (dispatch) => {
+  //   fetch('http://localhost:5000/posts')
+  //   .then(res=> res.json())
+  //   .then(data =>dispatch({ type: FETCH_ALL, payload: data }))    
+  // };
 
 
 export const createPost=(post)=> async (dispatch)=>{

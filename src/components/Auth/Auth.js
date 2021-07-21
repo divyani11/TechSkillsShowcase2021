@@ -10,7 +10,7 @@ import {
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux"
-import { AUTH } from "../../constants/actionTypes";
+import { AUTH } from "../../actions/actionTypes";
 import { useHistory } from "react-router";
 
 import Input from "./Input";

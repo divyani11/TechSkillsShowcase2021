@@ -4,7 +4,7 @@ import useStyles from "./styles";
 import logo from "../../images/brand-logo.png";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { LOGOUT } from "../../constants/actionTypes";
+import { LOGOUT } from "../../actions/actionTypes";
 
 const Navbar = () => {
   const classes = useStyles();

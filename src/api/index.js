@@ -3,9 +3,9 @@ import axios from 'axios';
 // URL for deploy to heroku
 // const url = 'https://surpasslabs.herokuapp.com/posts';
 
-const url = 'https://jsonplaceholder.typicode.com/posts'
+// const url = 'https://jsonplaceholder.typicode.com/posts'
 // URL for dev env
-// const url = 'http://localhost:5000/posts';
+const url = 'http://localhost:5000/posts';
 
 export const fetchPosts = () => axios.get(url);
 
