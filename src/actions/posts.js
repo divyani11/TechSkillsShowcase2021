@@ -1,11 +1,21 @@
 import * as api from '../api/index.js';
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from './actionTypes'
+import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE ,FETCH_INVESTMENT} from './actionTypes'
 //Action Creators
-export const getPosts = () => async (dispatch) => {
-    try {
-      const { data } = await api.fetchPosts();
+// export const getPosts = () => async (dispatch) => {
+//     try {
+//       const { data } = await api.fetchPosts();
   
-      dispatch({ type: FETCH_ALL, payload: data });
+//       dispatch({ type: FETCH_ALL, payload: data });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+  export const getInvestment = () => async (dispatch) => {
+    try {
+      const { data } = await api.fetchInvestment();
+      console.log(data)
+  
+      dispatch({ type: FETCH_INVESTMENT, payload: data });
     } catch (error) {
       console.log(error);
     }

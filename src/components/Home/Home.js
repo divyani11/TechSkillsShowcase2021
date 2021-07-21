@@ -2,8 +2,9 @@ import React, { useState, useEffect }from 'react'
 import { Container, Grow, Grid } from '@material-ui/core'
 import Posts from '../Posts/Posts'
 import Form from '../Form/Form'
+import InvestTable from "../Tables/Table/InvestTable"
 import { useDispatch } from "react-redux";
-import { getPosts } from "../../actions/posts";
+import { getPosts,getInvestment } from "../../actions/posts";
 
 
 
@@ -14,7 +15,7 @@ const Home = () => {
     const dispatch = useDispatch();
   
     useEffect(() => {
-      dispatch(getPosts());
+      dispatch(getInvestment());
     }, [currentId, dispatch]);
 
     return (
@@ -26,10 +27,10 @@ const Home = () => {
             alignItems="stretch"
             spacing={3}
           >
-            <Grid item xs={12} sm={7}>
-              <Posts setCurrentId={setCurrentId} />
+            <Grid item xs={12} sm={9}>
+              <InvestTable setCurrentId={setCurrentId} />
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={3}>
               <Form currentId={currentId} setCurrentId={setCurrentId} />
             </Grid>
           </Grid>

@@ -5,9 +5,11 @@ import axios from 'axios';
 
 // const url = 'https://jsonplaceholder.typicode.com/posts'
 // URL for dev env
-const url = 'http://localhost:5000/posts';
+const url = 'http://localhost:5001/api/investment';
 
-export const fetchPosts = () => axios.get(url);
+// export const fetchPosts = () => axios.get('http://localhost:5001');
+
+export const fetchInvestment = () => axios.get(url);
 
 
 export const createPost = (newPost) => axios.post(url, newPost);
