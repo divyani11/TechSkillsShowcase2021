@@ -18,6 +18,7 @@ import Icon from "./Icon";
 
 
 import useStyles from "./styles";
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 const Auth = () => {
   const classes = useStyles();
@@ -26,6 +27,8 @@ const Auth = () => {
 
   const [isSignup, setIsSignup] = useState(false);
 
+  const [formData, setFormData]= useState(initialState)
+
   const dispatch = useDispatch();
 
     const history=useHistory()
@@ -33,7 +36,10 @@ const Auth = () => {
 
   const handleShowPassword = () => setShowPassword(!showPassword);
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData)
+  };
 
   const handleChange = () => {};
 

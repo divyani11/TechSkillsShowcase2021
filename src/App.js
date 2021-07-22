@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import Auth from "./components/Auth/Auth";
+import Footer from "./components/Footer/Footer"
 import Dashboard from "./components/dashboard/Dashboard";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/auth" exact component={Auth} />
           <Route path="/dashboard" exact component={Dashboard} />
         </Switch>
+        <Footer />
       </Container>
     </BrowserRouter>
   );

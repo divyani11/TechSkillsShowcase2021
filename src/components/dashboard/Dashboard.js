@@ -6,6 +6,7 @@ import {CssBaseline,Drawer,Box,AppBar,Toolbar,List,Typography,Divider,IconButton
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
@@ -119,7 +120,7 @@ const Dashboard = () =>  {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+      {/* <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -139,7 +140,7 @@ const Dashboard = () =>  {
             </Badge>
           </IconButton>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <Drawer
         variant="permanent"
         classes={{
@@ -148,8 +149,8 @@ const Dashboard = () =>  {
         open={open}
       >
         <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
+          <IconButton onClick={open?handleDrawerClose:handleDrawerOpen}>
+            {open?<ChevronLeftIcon />:<ChevronRightIcon />}
           </IconButton>
         </div>
         <Divider />
