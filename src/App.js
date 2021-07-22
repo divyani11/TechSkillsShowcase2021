@@ -8,6 +8,7 @@ import Home from "./components/Home/Home";
 import Auth from "./components/Auth/Auth";
 import Footer from "./components/Footer/Footer"
 import Dashboard from "./components/dashboard/Dashboard";
+import Profile from "./components/Profile/Profile"
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/" exact component={Home} />
           <Route path="/auth" exact component={Auth} />
           <Route path="/dashboard" exact component={Dashboard} />
+          <Route path="/profile" exact component={Profile} />
         </Switch>
         <Footer />
       </Container>

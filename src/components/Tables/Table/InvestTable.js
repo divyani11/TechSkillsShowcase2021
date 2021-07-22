@@ -2,17 +2,17 @@ import React from "react";
 // import useStyles from "./styles";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import Title from "../../dashboard/Title"
 
 const useStyles = makeStyles({
   table: {
@@ -20,59 +20,61 @@ const useStyles = makeStyles({
   },
 });
 
-// 
-
+//
 
 const InvestTable = ({ setCurrentId }) => {
-  const investment=useSelector((state)=>state.investment)
+  const investment = useSelector((state) => state.investment);
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  return (     
-   
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>investmentId</TableCell>
-            <TableCell align="right">memberId</TableCell>
-            <TableCell align="right">amount</TableCell>
-            <TableCell align="right">type</TableCell>
-            <TableCell align="right">depositDate</TableCell>
-            <TableCell align="right">quarterId</TableCell>
-            <TableCell align="right">totalInvestment</TableCell>
-            <TableCell align="right">totalShares</TableCell>
-            <TableCell align="right">image</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {investment.map((inve) => (
-            <TableRow key={inve.memberId}>
-              <TableCell component="th" scope="row">
-                {inve.memberId}
-              </TableCell>
-              <TableCell align="right">{inve.memberId}</TableCell>
-              <TableCell align="right">{inve.amount}</TableCell>
-              <TableCell align="right">{inve.type}</TableCell>
-              <TableCell align="right">{inve.depositDate}</TableCell>
-              <TableCell align="right">{inve.quarterId}</TableCell>
-              <TableCell align="right">{inve.totalInvestment}</TableCell>
-              <TableCell align="right">{inve.totalShares}</TableCell>
-              <TableCell align="right"><img src="{inve.image}"></img></TableCell>
+  return (
+    <div>
+      <Title>Investment Records</Title>
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>investmentId</TableCell>
+              <TableCell align="right">memberId</TableCell>
+              <TableCell align="right">amount</TableCell>
+              <TableCell align="right">type</TableCell>
+              <TableCell align="right">depositDate</TableCell>
+              <TableCell align="right">quarterId</TableCell>
+              <TableCell align="right">totalInvestment</TableCell>
+              <TableCell align="right">totalShares</TableCell>
+              <TableCell align="right">image</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-
+          </TableHead>
+          <TableBody>
+            {investment.map((inve) => (
+              <TableRow key={inve.memberId}>
+                <TableCell component="th" scope="row">
+                  {inve.memberId}
+                </TableCell>
+                <TableCell align="right">{inve.memberId}</TableCell>
+                <TableCell align="right">{inve.amount}</TableCell>
+                <TableCell align="right">{inve.type}</TableCell>
+                <TableCell align="right">{inve.depositDate}</TableCell>
+                <TableCell align="right">{inve.quarterId}</TableCell>
+                <TableCell align="right">{inve.totalInvestment}</TableCell>
+                <TableCell align="right">{inve.totalShares}</TableCell>
+                <TableCell align="right">
+                  <img src="{inve.image}"></img>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
-}
+};
 
-export default InvestTable
+export default InvestTable;
 
 // const Post = ({ post, setCurrentId }) => {
 //   const classes = useStyles();
-  // const dispatch = useDispatch();
+// const dispatch = useDispatch();
 
 //   return (
 //     <Card className={classes.card}>
@@ -138,5 +140,3 @@ export default InvestTable
 // };
 
 // export default Post;
-
-

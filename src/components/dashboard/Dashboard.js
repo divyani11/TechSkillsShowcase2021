@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect }from 'react'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import {CssBaseline,Drawer,Box,AppBar,Toolbar,List,Typography,Divider,IconButton,Badge,Container,Grid,Paper,Link} from '@material-ui/core';
@@ -12,18 +12,11 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
+import { useDispatch } from "react-redux";
+import { getPosts,getInvestment } from "../../actions/posts";
+import InvestTable from '../Tables/Table/InvestTable';
+import PieCharts from './PieCharts';
+
 
 const drawerWidth = 240;
 
@@ -109,6 +102,14 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = () =>  {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [currentId, setCurrentId] = useState(null);
+
+  const dispatch = useDispatch();
+  
+    useEffect(() => {
+      dispatch(getInvestment());
+    }, [currentId, dispatch]);
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -116,7 +117,7 @@ const Dashboard = () =>  {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
+//  console.log(investment[investment.length-1])
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -159,31 +160,37 @@ const Dashboard = () =>  {
         <List>{secondaryListItems}</List>
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
+        {/* <div className={classes.appBarSpacer} /> */}
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
+            {/* <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
+              
                 <Chart />
               </Paper>
-            </Grid>
+            </Grid> */}
             {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
+            <Grid item xs={12} md={8} lg={6}>
+              <Paper className={fixedHeightPaper}>
+              <PieCharts />
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} md={6} lg={4}>
               <Paper className={fixedHeightPaper}>
                 <Deposits />
               </Paper>
             </Grid>
-            {/* Recent Orders */}
+           
+            
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+              <InvestTable />
               </Paper>
             </Grid>
           </Grid>
-          <Box pt={4}>
-            {/* <Copyright /> */}
-          </Box>
+
         </Container>
       </main>
     </div>

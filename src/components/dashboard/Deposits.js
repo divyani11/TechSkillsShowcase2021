@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link, Typography} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { useDispatch } from "react-redux";
+import { useSelector } from 'react-redux';
 import Title from './Title';
 
 function preventDefault(event) {
@@ -14,16 +15,21 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Deposits() {
+const Deposits=({ setCurrentId })=> {
+  const investment=useSelector((state)=>state.investment)
+ 
+
+
+    const dispatch = useDispatch();
   const classes = useStyles();
   return (
     <React.Fragment>
       <Title>Recent Deposits</Title>
       <Typography component="p" variant="h4">
-        $3,024.00
+        {investment[investment.length-1].amount}
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
-        on 15 March, 2019
+      {investment[investment.length-1].depositDate}
       </Typography>
       <div>
         <Link color="primary" href="#" onClick={preventDefault}>
@@ -33,3 +39,6 @@ export default function Deposits() {
     </React.Fragment>
   );
 }
+
+
+export default Deposits
