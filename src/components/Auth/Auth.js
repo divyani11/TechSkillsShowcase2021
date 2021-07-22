@@ -15,6 +15,7 @@ import { useHistory } from "react-router";
 
 import Input from "./Input";
 import Icon from "./Icon";
+import {signin,signup} from '../../actions/auth' 
 
 
 import useStyles from "./styles";
@@ -38,10 +39,19 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData)
+
+    if (isSignup) {
+      dispatch(signup(formData, history));
+    } else {
+      dispatch(signin(formData, history));
+    }
   };
 
-  const handleChange = () => {};
+
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]:e.target.value})
+  };
 
   const switchMode = () => {
     setIsSignup(!isSignup);
